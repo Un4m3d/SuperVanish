@@ -76,6 +76,7 @@ public class VisibilityChanger {
             for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                 if (!plugin.hasPermissionToSee(onlinePlayer, player))
                     plugin.getVisibilityChanger().getHider().setHidden(player, onlinePlayer, true);
+                    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set tab.staff false");
             // fly check
             if (config.getBoolean("InvisibilityFeatures.Fly.Enable")) {
                 player.setAllowFlight(true);
@@ -133,6 +134,7 @@ public class VisibilityChanger {
             for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                 if (!plugin.hasPermissionToSee(onlinePlayer, player))
                     plugin.getVisibilityChanger().getHider().setHidden(player, onlinePlayer, false);
+                    Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission set tab.staff true");
             // action bars
             if (plugin.getActionBarMgr() != null && config.getBoolean("MessageOptions.DisplayActionBar")) {
                 plugin.getActionBarMgr().removeActionBar(player);
